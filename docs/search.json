@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Global Temperature Trends",
+    "section": "",
+    "text": "This site visualizes how global surface temperatures have changed since 1880, using the NASA GISS Surface Temperature Analysis (GISTEMP v4).\nValues are temperature anomalies: how much warmer or cooler a period was compared with the 1951–1980 average, in degrees Celsius."
+  },
+  {
+    "objectID": "index.html#about-this-site",
+    "href": "index.html#about-this-site",
+    "title": "Global Temperature Trends",
+    "section": "",
+    "text": "This site visualizes how global surface temperatures have changed since 1880, using the NASA GISS Surface Temperature Analysis (GISTEMP v4).\nValues are temperature anomalies: how much warmer or cooler a period was compared with the 1951–1980 average, in degrees Celsius."
+  },
+  {
+    "objectID": "index.html#whats-inside",
+    "href": "index.html#whats-inside",
+    "title": "Global Temperature Trends",
+    "section": "What’s inside",
+    "text": "What’s inside\nThe Dashboard includes:\n\nSummary numbers: latest full year and warmest year on record\nThree line charts of the annual anomaly\n\na basic line chart\na styled line chart\nthe annual values with a 5-year rolling average\n\nAn animated chart of monthly anomalies, year by year"
+  },
+  {
+    "objectID": "index.html#data-source",
+    "href": "index.html#data-source",
+    "title": "Global Temperature Trends",
+    "section": "Data source",
+    "text": "Data source\nNASA Goddard Institute for Space Studies, GISS Surface Temperature Analysis. The data is downloaded each time the site is rendered, so rebuilding the site picks up NASA’s latest update.\n\n\n\n\n\n\nNote\n\n\n\nThe current year is incomplete, so it has no annual (J–D) value. It is left out of the annual charts but appears in the monthly animation."
+  }
+]
