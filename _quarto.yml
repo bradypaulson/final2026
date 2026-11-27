@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: docs
 
 
 website:
@@ -13,7 +13,7 @@ website:
         text: Dashboard
     right:
       - icon: github
-        href: https://github.com/YOUR-USERNAME/YOUR-REPO
+        href: https://github.com/bradypaulson/final2026
 
 format:
   html:

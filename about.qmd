@@ -1,6 +1,15 @@
-------------------------------------------------------------------------
-
-title: "Global Temperature Anomalies (1880–Present)" format: dashboard: orientation: rows nav-buttons: - icon: house href: index.html text: Home - icon: github href: https://github.com/bradypaulson/final2026
+---
+title: "Global Temperature Anomalies (1880–Present)"
+format:
+  dashboard:
+    orientation: rows
+    nav-buttons:
+      - icon: house
+        href: index.html
+        text: Home
+      - icon: github
+        href: https://github.com/bradypaulson/final2026
+---
 
 ```{r}
 #| label: setup
