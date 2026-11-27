@@ -1,9 +1,158 @@
----
-title: "About"
----
+------------------------------------------------------------------------
 
-About this site
+title: "Global Temperature Anomalies (1880–Present)" format: dashboard: orientation: rows nav-buttons: - icon: house href: index.html text: Home - icon: github href: https://github.com/bradypaulson/final2026
 
 ```{r}
-1 + 1
+#| label: setup
+#| include: false
+
+library(plotly)
+source("data.R")
+```
+
+## Row {height="18%"}
+
+```{r}
+#| content: valuebox
+#| title: !expr paste0("Latest full year (", latest$Year, ")")
+
+list(
+  icon = "thermometer-half",
+  color = "warning",
+  value = paste0(sprintf("%+.2f", latest$Anomaly), " °C"))
+```
+
+```{r}
+#| content: valuebox
+#| title: !expr paste0("Warmest year on record (", warmest$Year, ")")
+
+list(
+  icon = "thermometer-high",
+  color = "danger",
+  value = paste0(sprintf("%+.2f", warmest$Anomaly), " °C"))
+```
+
+```{r}
+#| content: valuebox
+#| title: "Years of data"
+
+list(
+  icon = "calendar3",
+  color = "primary",
+  value = nrow(annual_df))
+```
+
+## Row {.tabset height="47%"}
+
+```{r}
+#| title: "1. Basic line chart"
+
+plot_ly(
+  annual_df,
+  x = ~Year,
+  y = ~Anomaly,
+  type = "scatter",
+  mode = "lines"
+) |>
+  layout(
+    title = "Global Temperature Anomalies Over Time",
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Temperature Anomaly (°C)"))
+```
+
+```{r}
+#| title: "2. Styled line chart"
+
+plot_ly(
+  annual_df,
+  x = ~Year,
+  y = ~Anomaly,
+  type = "scatter",
+  mode = "lines",
+  line = list(color = "blue")
+) |>
+  layout(
+    title = list(
+      text = "Global Temperature Anomalies (1880–Present)",
+      x = 0.5
+    ),
+    font = list(family = "Arial", size = 13, color = "#222222"),
+    plot_bgcolor = "white",
+    xaxis = list(
+      title = "Year",
+      showgrid = TRUE,
+      gridcolor = "grey"
+    ),
+    yaxis = list(
+      title = "Temperature Anomaly (°C)",
+      showgrid = TRUE,
+      gridcolor = "grey",
+      zeroline = TRUE,
+      zerolinecolor = "black"
+    ))
+```
+
+```{r}
+#| title: "3. Annual vs. 5-year average"
+
+plot_ly(annual_df, x = ~Year) |>
+  add_lines(
+    y = ~Anomaly,
+    name = "Annual Temperature Anomaly",
+    line = list(color = "rgba(37, 99, 235, 0.45)", width = 1.5)
+  ) |>
+  add_lines(
+    y = ~Rolling,
+    name = "5-Year Rolling Average",
+    line = list(color = "red", width = 3)
+  ) |>
+  layout(
+    title = "Global Temperature Trends: Annual vs. 5-Year Average",
+    xaxis = list(title = "Year", gridcolor = "grey"),
+    yaxis = list(title = "Temperature Anomaly (°C)", gridcolor = "grey"),
+    plot_bgcolor = "white",
+    hovermode = "x unified",
+    legend = list(orientation = "h", x = 0, y = 1.12))
+```
+
+## Row {height="35%"}
+
+```{r}
+#| title: "Monthly anomalies by year (press play)"
+
+plot_ly(
+  data = monthly_df,
+  x = ~Month,
+  y = ~Anomaly,
+  frame = ~Year,
+  type = "scatter",
+  mode = "markers",
+  marker = list(
+    size = 10,
+    color = ~Anomaly,
+    colorscale = "RdBu",
+    reversescale = TRUE, # same as RdBu_r in Plotly Express
+    cmin = -1.5,
+    cmax = 1.5,
+    colorbar = list(title = "Anomaly (°C)")
+  ),
+  text = ~paste0(Month, " ", Year, ": ", sprintf("%.2f", Anomaly), " °C"),
+  hoverinfo = "text"
+) |>
+  layout(
+    plot_bgcolor = "white",
+    xaxis = list(
+      title = "Month",
+      categoryorder = "array",
+      categoryarray = months,
+      gridcolor = "grey"
+    ),
+    yaxis = list(
+      title = "Temperature Anomaly (°C)",
+      range = c(-1.5, 1.5),
+      gridcolor = "grey"
+    )
+  ) |>
+  animation_opts(frame = 500, transition = 300, redraw = FALSE) |>
+  animation_slider(currentvalue = list(prefix = "Year: "))
 ```

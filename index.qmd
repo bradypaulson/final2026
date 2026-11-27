@@ -1,11 +1,29 @@
 ---
-title: "final2026"
+title: "Global Temperature Trends"
+subtitle: "NASA GISTEMP land-ocean temperature anomalies, 1880 to present"
 ---
 
-This is a Quarto website.
+## About this site
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This site visualizes how global surface temperatures have changed since 1880, using the NASA GISS Surface Temperature Analysis (GISTEMP v4).
 
-```{r}
-1 + 1
-```
+Values are **temperature anomalies**: how much warmer or cooler a period was compared with the 1951–1980 average, in degrees Celsius.
+
+## What's inside
+
+The [**Dashboard**](dashboard.qmd) includes:
+
+- Summary numbers: latest full year and warmest year on record
+- Three line charts of the annual anomaly
+  - a basic line chart
+  - a styled line chart
+  - the annual values with a 5-year rolling average
+- An animated chart of monthly anomalies, year by year
+
+## Data source
+
+NASA Goddard Institute for Space Studies, [GISS Surface Temperature Analysis](https://data.giss.nasa.gov/gistemp/). The data is downloaded each time the site is rendered, so rebuilding the site picks up NASA's latest update.
+
+::: callout-note
+The current year is incomplete, so it has no annual (J–D) value. It is left out of the annual charts but appears in the monthly animation.
+:::

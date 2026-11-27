@@ -1,21 +1,22 @@
 project:
   type: website
+  output-dir: _site
+
 
 website:
-  title: "final2026"
+  title: "Global Temperature Trends"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: dashboard.qmd
+        text: Dashboard
+    right:
+      - icon: github
+        href: https://github.com/YOUR-USERNAME/YOUR-REPO
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
-    toc: true
-
-editor: visual
 
